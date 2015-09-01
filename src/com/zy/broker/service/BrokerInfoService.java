@@ -18,4 +18,7 @@ public class BrokerInfoService extends CommonService<BrokerInfo,String>{
 		super.setCommonDao(brokerInfoDao);
 	}
 	
+	public void updateDeleteFlag(String[] ids,Integer isDelete){
+		brokerInfoDao.updateDeleteFlag(ids,isDelete);
+	}
 }

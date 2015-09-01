@@ -5,4 +5,5 @@ import com.zy.common.dao.CommonDao;
 
 public interface BrokerExtInfoDao extends BrokerExtInfoCustomDao,CommonDao<BrokerExtInfo,String>{
 
+	public void updateDeleteFlag(String[] ids,Integer isDelete);
 }

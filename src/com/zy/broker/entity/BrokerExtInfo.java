@@ -456,6 +456,4 @@ public class BrokerExtInfo extends BrokerInfo{
 		this.closeRateExt = closeRateExt;
 	}
 
-	
-	
 }
