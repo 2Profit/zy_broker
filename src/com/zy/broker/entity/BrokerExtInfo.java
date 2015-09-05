@@ -18,144 +18,64 @@ public class BrokerExtInfo extends BrokerInfo{
 
 	private static final long serialVersionUID = -6484727702617090488L;
 
-	/**
-	 * 公司属地 (0-香港/1-中国/2-台湾/3-其他)
-	 */
-	private String companyArea;
-	/**
-	 * 公司类型 (0-黄金/1-外汇/2-中国A股)
-	 * 多选项、逗号分隔
-	 */
-	private String companyType;
-	/**
-	 * 交易平台 (0-MT4/1-MT5/2-GTS1/3-GTS2/4-mFinance) 
-	 * 多选项、逗号分隔
-	 */
-	private String platform;
-	/**
-	 * 业务形式 (0-代理/1-直销/2-混合)
-	 */
-	private String serviceShape;
-	/**
-	 * 产品点差 (0-固定/1-浮动)
-	 */
-	private String pointDiff;
-	/**
-	 * 产品点差(最低)LLG、LLS、HKG、LKG
-	 */
-	private Double pointDiffMinLlg;
+	private String websiteUrl;				//官网地址
+	private String isShowUrl;				//是否显示链接（0-不显示，1-显示）
+	private String companyArea = "1";		//公司属地 (0-香港/1-中国/2-台湾/3-其他)
+	private String platform = "0";			//交易平台 ,多选项、逗号分隔(0-MT4/1-MT5/2-GTS1/3-GTS2/4-mFinance) 
+	private String serviceShape;			//业务形式 (0-代理/1-直销/2-混合)
+	private String isSingalService = "0";	//喊单服务(1-提供/0-不提供)
+	private String isAccountSeperate = "0";	//帐户分层(1-提供/0-不提供)
+	private String companyType;				//公司类型,多选项、逗号分隔 (0-黄金/1-外汇/2-中国A股)
+	private String productType = "0,1";		//产品,多选项、逗号分隔(0-伦敦金/1-伦敦银/2-港金/3-人民币公斤条)
+	private String moneyType = "0";			//结算币值(0-美元/1-人民幣/2-港元/3-混合)
+	private String pointDiff = "0";			//产品点差 (0-固定/1-浮动)
+	
+	private Double pointDiffMinLlg;			//产品点差(最低)LLG、LLS、HKG、LKG
 	private Double pointDiffMinLls;
 	private Double pointDiffMinHkg;
 	private Double pointDiffMinLkg;
-	/**
-	 * 产品点差(最高)LLG、LLS、HKG、LKG
-	 */
-	private Double pointDiffMaxLlg;
+	
+	private Double pointDiffMaxLlg;			//产品点差(最高)LLG、LLS、HKG、LKG
 	private Double pointDiffMaxLls;
 	private Double pointDiffMaxHkg;
 	private Double pointDiffMaxLkg;
-	/**
-	 * 单次最高交易手数LLG、LLS、HKG、LKG
-	 */
-	private Double maxTradeNumLlg;
+	
+	private Double maxTradeNumLlg;			//单次最高交易手数LLG、LLS、HKG、LKG
 	private Double maxTradeNumLls;
 	private Double maxTradeNumHkg;
 	private Double maxTradeNumLkg;
-	/**
-	 * 持仓手数上限
-	 */
-	private Double maxHoldNum;
-	/*private Double maxHoldNumLlg;
-	private Double maxHoldNumLls;
-	private Double maxHoldNumHkg;
-	private Double maxHoldNumLkg;*/
-	/**
-	 * 客户回佣 (1-提供/0-不提供)
-	 */
-	private String isReturnCommission;
-	/**
-	 * 交易编码(1-提供/0-不提供)
-	 */
-	private String isTradeCode;
-	/**
-	 * 建仓手续费（1-收取/0-不收取）
-	 */
-	private String isOpenFee;
-	/**
-	 * 平仓手续费（1-收 取/0-不收取）
-	 */
-	private String isCloseFee;
-	/**
-	 * 长仓利息
-	 */
-	private Double longRate;
-	/**
-	 * 短仓利息
-	 */
-	private Double shortRate;
-	/**
-	 * 结算币值(0-美元/1-人民幣/2-港元/3-混合)
-	 */
-	private String moneyType;
-	/**
-	 * 开仓保证金(LLG、LLS、HKG、LKG)
-	 */
-	private BigDecimal openMoneyLlg;
+	private Double maxHoldNum;				//持仓手数上限
+	private String isReturnCommission = "1";//客户回佣 (1-提供/0-不提供)
+	private String isTradeCode = "1";		//交易编码(1-提供/0-不提供)
+	private String isOpenFee = "1";			//建仓手续费（1-收取/0-不收取）
+	private String isCloseFee = "1";		//平仓手续费（1-收 取/0-不收取）
+	private Double longRate;				//长仓利息(接受录入负数值, 例如, -1.25%、-0.75%)
+	private Double shortRate;				//短仓利息(接受录入负数值, 例如, -1.25%、-0.75%)
+	
+	private BigDecimal openMoneyLlg;		//开仓保证金(LLG、LLS、HKG、LKG/伦敦金、伦敦银、港金、人民币公斤条)
 	private BigDecimal openMoneyLls;
 	private BigDecimal openMoneyHkg;
 	private BigDecimal openMoneyLkg;
-	/**
-	 * 维持保证金(LLG、LLS、HKG、LKG)
-	 */
-	private BigDecimal holdMoneyLlg;
-	private BigDecimal holdMoneyLls;
-	private BigDecimal holdMoneyHkg;
-	private BigDecimal holdMoneyLkg;
-	/**
-	 * 锁仓保证金(LLG、LLS、HKG、LKG)
-	 */
-	private BigDecimal closeMoneyLlg;
-	private BigDecimal closeMoneyLls;
-	private BigDecimal closeMoneyHkg;
-	private BigDecimal closeMoneyLkg;
-	/**
-	 * 网页显示 (1-开/0-关)
-	 */
-	private String isShowPage;
-	/**
-	 * 链接显示 (1-开/0-关)
-	 */
-	private String isShowUrl;
-	/**
-	 * 交易商链接 
-	 */
-	private String url;
-	/**
-	 * 杠杆比例
-	 */
-	private Double leverRate;
-	/**
-	 * 喊单服务
-	 */
-	private String isSingalService;
-	/**
-	 * 帐户分层(1-提供/0-不提供)
-	 */
-	private String isAccountSeperate;
-	/**
-	 * 产品(0-LLG/1-LLS/2-HKG/3-LKG)
-	 * 多选项、逗号分隔
-	 */
-	private String productType;
-	/**
-	 * 強平百分比
-	 */
-	private Double closeRate;
-	/**
-	 * 强平百分比——周末/假日
-	 */
-	private Double closeRateExt;
+	private Double leverRate;			//杠杆比例
+	private Double closeRate;			// 強平百分比
+	private Double closeRateExt;		//强平百分比——周末/假日
+	private String isEaSupport = "0";	//EA支援（0-不支援、1-支援）
+	private Integer companyIndex;		//公司推荐值（数据库自增，数字大优先级高）
 	
+	@Column(length=64)
+	public String getWebsiteUrl() {
+		return websiteUrl;
+	}
+	public void setWebsiteUrl(String websiteUrl) {
+		this.websiteUrl = websiteUrl;
+	}
+	@Column(length=2)
+	public String getIsShowUrl() {
+		return isShowUrl;
+	}
+	public void setIsShowUrl(String isShowUrl) {
+		this.isShowUrl = isShowUrl;
+	}
 	@Column(length=8)
 	public String getCompanyArea() {
 		return companyArea;
@@ -216,20 +136,6 @@ public class BrokerExtInfo extends BrokerInfo{
 	}
 	public void setMoneyType(String moneyType) {
 		this.moneyType = moneyType;
-	}
-	@Column(length=8)
-	public String isShowPage() {
-		return isShowPage;
-	}
-	public void setShowPage(String isShowPage) {
-		this.isShowPage = isShowPage;
-	}
-	@Column(length=128)
-	public String getUrl() {
-		return url;
-	}
-	public void setUrl(String url) {
-		this.url = url;
 	}
 	public Double getLeverRate() {
 		return leverRate;
@@ -360,68 +266,6 @@ public class BrokerExtInfo extends BrokerInfo{
 	public void setOpenMoneyLkg(BigDecimal openMoneyLkg) {
 		this.openMoneyLkg = openMoneyLkg;
 	}
-	public BigDecimal getHoldMoneyLlg() {
-		return holdMoneyLlg;
-	}
-	public void setHoldMoneyLlg(BigDecimal holdMoneyLlg) {
-		this.holdMoneyLlg = holdMoneyLlg;
-	}
-	public BigDecimal getHoldMoneyLls() {
-		return holdMoneyLls;
-	}
-	public void setHoldMoneyLls(BigDecimal holdMoneyLls) {
-		this.holdMoneyLls = holdMoneyLls;
-	}
-	public BigDecimal getHoldMoneyHkg() {
-		return holdMoneyHkg;
-	}
-	public void setHoldMoneyHkg(BigDecimal holdMoneyHkg) {
-		this.holdMoneyHkg = holdMoneyHkg;
-	}
-	public BigDecimal getHoldMoneyLkg() {
-		return holdMoneyLkg;
-	}
-	public void setHoldMoneyLkg(BigDecimal holdMoneyLkg) {
-		this.holdMoneyLkg = holdMoneyLkg;
-	}
-	public BigDecimal getCloseMoneyLlg() {
-		return closeMoneyLlg;
-	}
-	public void setCloseMoneyLlg(BigDecimal closeMoneyLlg) {
-		this.closeMoneyLlg = closeMoneyLlg;
-	}
-	public BigDecimal getCloseMoneyLls() {
-		return closeMoneyLls;
-	}
-	public void setCloseMoneyLls(BigDecimal closeMoneyLls) {
-		this.closeMoneyLls = closeMoneyLls;
-	}
-	public BigDecimal getCloseMoneyHkg() {
-		return closeMoneyHkg;
-	}
-	public void setCloseMoneyHkg(BigDecimal closeMoneyHkg) {
-		this.closeMoneyHkg = closeMoneyHkg;
-	}
-	public BigDecimal getCloseMoneyLkg() {
-		return closeMoneyLkg;
-	}
-	public void setCloseMoneyLkg(BigDecimal closeMoneyLkg) {
-		this.closeMoneyLkg = closeMoneyLkg;
-	}
-	@Column(length=8)
-	public String getIsShowPage() {
-		return isShowPage;
-	}
-	public void setIsShowPage(String isShowPage) {
-		this.isShowPage = isShowPage;
-	}
-	@Column(length=8)
-	public String getIsShowUrl() {
-		return isShowUrl;
-	}
-	public void setIsShowUrl(String isShowUrl) {
-		this.isShowUrl = isShowUrl;
-	}
 	@Column(length=8)
 	public String getIsSingalService() {
 		return isSingalService;
@@ -455,5 +299,21 @@ public class BrokerExtInfo extends BrokerInfo{
 	public void setCloseRateExt(Double closeRateExt) {
 		this.closeRateExt = closeRateExt;
 	}
-
+	@Column(length=2)
+	public String getIsEaSupport() {
+		return isEaSupport;
+	}
+	public void setIsEaSupport(String isEaSupport) {
+		this.isEaSupport = isEaSupport;
+	}
+	public Integer getCompanyIndex() {
+		return companyIndex;
+	}
+	public void setCompanyIndex(Integer companyIndex) {
+		this.companyIndex = companyIndex;
+	}
+	
+	
+	
+	
 }

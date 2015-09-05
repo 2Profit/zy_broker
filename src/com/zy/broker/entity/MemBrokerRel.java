@@ -5,12 +5,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.sun.corba.se.pept.broker.Broker;
 import com.zy.common.entity.BaseEntity;
 import com.zy.member.entity.Member;
 
 /**
- * ÓÃ»§¾­¼ÍÉÌ¹ØÁª±í
+ * ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½
  * @author Jeff Xu
  *
  */
