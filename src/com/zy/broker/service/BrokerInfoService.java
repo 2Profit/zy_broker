@@ -1,5 +1,7 @@
 package com.zy.broker.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,5 +22,9 @@ public class BrokerInfoService extends CommonService<BrokerInfo,String>{
 	
 	public void updateDeleteFlag(String[] ids,Integer isDelete){
 		brokerInfoDao.updateDeleteFlag(ids,isDelete);
+	}
+	
+	public List<BrokerInfo> findAllBrokerInfo(Integer deleteFlag){
+		return brokerInfoDao.findAllBrokerInfo(deleteFlag);
 	}
 }
