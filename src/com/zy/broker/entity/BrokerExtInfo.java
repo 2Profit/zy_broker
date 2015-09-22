@@ -35,12 +35,12 @@ public class BrokerExtInfo extends BrokerInfo{
 	private Double pointDiffMinHkg;
 	private Double pointDiffMinLkg;
 	
-	private Double pointDiffMaxLlg;			//产品点差(最高)LLG、LLS、HKG、LKG
-	private Double pointDiffMaxLls;
-	private Double pointDiffMaxHkg;
-	private Double pointDiffMaxLkg;
+	private Double minTradeNumLlg;			//单次交易手数(最低)LLG、LLS、HKG、LKG
+	private Double minTradeNumLls;
+	private Double minTradeNumHkg;
+	private Double minTradeNumLkg;
 	
-	private Double maxTradeNumLlg;			//单次最高交易手数LLG、LLS、HKG、LKG
+	private Double maxTradeNumLlg;			//单次交易手数(最高)LLG、LLS、HKG、LKG
 	private Double maxTradeNumLls;
 	private Double maxTradeNumHkg;
 	private Double maxTradeNumLkg;
@@ -60,7 +60,7 @@ public class BrokerExtInfo extends BrokerInfo{
 	private Double closeRate;			// 強平百分比
 	private Double closeRateExt;		//强平百分比——周末/假日
 	private String isEaSupport = "0";	//EA支援（0-不支援、1-支援）
-	private Integer companyIndex;		//公司推荐值（数据库自增，数字大优先级高）
+	private Integer companyIndex;		//公司推荐值（数字大优先级高）
 	
 	@Column(length=64)
 	public String getWebsiteUrl() {
@@ -167,29 +167,29 @@ public class BrokerExtInfo extends BrokerInfo{
 	public void setPointDiffMinLkg(Double pointDiffMinLkg) {
 		this.pointDiffMinLkg = pointDiffMinLkg;
 	}
-	public Double getPointDiffMaxLlg() {
-		return pointDiffMaxLlg;
+	public Double getMinTradeNumLlg() {
+		return minTradeNumLlg;
 	}
-	public void setPointDiffMaxLlg(Double pointDiffMaxLlg) {
-		this.pointDiffMaxLlg = pointDiffMaxLlg;
+	public void setMinTradeNumLlg(Double minTradeNumLlg) {
+		this.minTradeNumLlg = minTradeNumLlg;
 	}
-	public Double getPointDiffMaxLls() {
-		return pointDiffMaxLls;
+	public Double getMinTradeNumLls() {
+		return minTradeNumLls;
 	}
-	public void setPointDiffMaxLls(Double pointDiffMaxLls) {
-		this.pointDiffMaxLls = pointDiffMaxLls;
+	public void setMinTradeNumLls(Double minTradeNumLls) {
+		this.minTradeNumLls = minTradeNumLls;
 	}
-	public Double getPointDiffMaxHkg() {
-		return pointDiffMaxHkg;
+	public Double getMinTradeNumHkg() {
+		return minTradeNumHkg;
 	}
-	public void setPointDiffMaxHkg(Double pointDiffMaxHkg) {
-		this.pointDiffMaxHkg = pointDiffMaxHkg;
+	public void setMinTradeNumHkg(Double minTradeNumHkg) {
+		this.minTradeNumHkg = minTradeNumHkg;
 	}
-	public Double getPointDiffMaxLkg() {
-		return pointDiffMaxLkg;
+	public Double getMinTradeNumLkg() {
+		return minTradeNumLkg;
 	}
-	public void setPointDiffMaxLkg(Double pointDiffMaxLkg) {
-		this.pointDiffMaxLkg = pointDiffMaxLkg;
+	public void setMinTradeNumLkg(Double minTradeNumLkg) {
+		this.minTradeNumLkg = minTradeNumLkg;
 	}
 	public Double getMaxTradeNumLlg() {
 		return maxTradeNumLlg;
