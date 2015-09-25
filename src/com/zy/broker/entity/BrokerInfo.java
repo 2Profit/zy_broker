@@ -20,24 +20,33 @@ public class BrokerInfo extends BaseEntity{
 
 	private static final long serialVersionUID = -2401313775739843476L;
 
-	/**
-	 * 交易商名称
-	 */
-	private String name;
-	/**
-	 * 金银业贸易场编号
-	 */
-	private String exchangeNo;
+	private String cnName;//中文名称
+	private String enName;//英文名称
+	private String exchangeType;//监管机构类型(0-金银业贸易场、1-证监会、2-不设)
+	private String exchangeNo;//监管机构授予编号
 	
-	
-	@Column(name="name",length=128)
-	public String getName() {
-		return name;
+	@Column(length=128)
+	public String getCnName() {
+		return cnName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setCnName(String cnName) {
+		this.cnName = cnName;
 	}
-	@Column(name="exchange_no",length=64)
+	@Column(length=128)
+	public String getEnName() {
+		return enName;
+	}
+	public void setEnName(String enName) {
+		this.enName = enName;
+	}
+	@Column(length=2)
+	public String getExchangeType() {
+		return exchangeType;
+	}
+	public void setExchangeType(String exchangeType) {
+		this.exchangeType = exchangeType;
+	}
+	@Column(name="exchange_no",length=128)
 	public String getExchangeNo() {
 		return exchangeNo;
 	}

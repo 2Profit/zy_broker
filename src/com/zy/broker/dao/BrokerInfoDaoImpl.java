@@ -23,9 +23,17 @@ public class BrokerInfoDaoImpl extends CustomBaseSqlDaoImpl implements BrokerInf
 		StringBuilder hql = new StringBuilder("select l from BrokerInfo l where 1=1 ");
 		Map<String,Object> params = new HashMap<String,Object>();
 		
-		if(StringUtils.isNotBlank(queryDto.getName())){
-			hql.append(" and l.name like :brokerInfoName ");
-			params.put("brokerInfoName", "%"+queryDto.getName()+"%");
+		if(StringUtils.isNotBlank(queryDto.getCnName())){
+			hql.append(" and l.cnName like :cnName ");
+			params.put("cnName", "%"+queryDto.getCnName()+"%");
+		}
+		if(StringUtils.isNotBlank(queryDto.getEnName())){
+			hql.append(" and l.enName like :enName ");
+			params.put("enName", "%"+queryDto.getEnName()+"%");
+		}
+		if(StringUtils.isNotBlank(queryDto.getExchangeType())){
+			hql.append(" and l.exchangeType = :exchangeType ");
+			params.put("exchangeType", queryDto.getExchangeType());
 		}
 		if(StringUtils.isNotBlank(queryDto.getExchangeNo())){
 			hql.append(" and l.exchangeNo = :exchangeNo ");
