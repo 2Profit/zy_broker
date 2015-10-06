@@ -22,7 +22,7 @@ public class BrokerInfo extends BaseEntity{
 
 	private String cnName;//中文名称
 	private String enName;//英文名称
-	private String exchangeType;//监管机构类型(0-金银业贸易场、1-证监会、2-不设)
+	private String exchangeType;//监管机构类型(0-金银业贸易场、1-证监会、2-英国FCA、3-日本FSA)
 	private String exchangeNo;//监管机构授予编号
 	
 	@Column(length=128)
