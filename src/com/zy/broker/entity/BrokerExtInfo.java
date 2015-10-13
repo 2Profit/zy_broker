@@ -25,32 +25,55 @@ public class BrokerExtInfo extends BrokerInfo{
 	private String serviceShape;			//业务形式 (0-代理/1-直销/2-混合)
 	private String isSingalService;			//喊单服务(1-提供/0-不提供)
 	private String isAccountSeperate;		//帐户分层(1-提供/0-不提供)
-	private String companyType;				//公司类型,多选项、逗号分隔 (0-黄金/1-外汇/2-中国A股)
-	private String productType;				//产品,多选项、逗号分隔(0-伦敦金/1-伦敦银/2-港金/3-人民币公斤条)
+	private String companyType;				//公司类型,多选项、逗号分隔 (0-黄金/1-外汇/2-二元期权、3-国际现货金银、4-混合)
+	private String productType;				//产品,多选项、逗号分隔(0-伦敦金/1-伦敦银/2-港金/3-人民币公斤条/4-外汇/5-原油)
 	private String moneyType;				//结算币值(0-美元/1-人民幣/2-港元/3-混合)
 	private String pointDiff;				//产品点差 (0-固定/1-浮动)
 	
-	private Double pointDiffMinLlg;			//产品点差(最低)LLG、LLS、HKG、LKG
+	private String licenseType;				//牌照类型（AA, A1, A2, B, C, D, S）
+	private String commissionUrl;			//返佣URL
+	private String isInOutFree;  			//是否出入金面手续费（0-否，1-是）
+	private String isUnionpay;				//是否支持银联（0-否，1-是）
+	private String isRmbSupport;			//是否支持人民币入金（0-否，1-是）
+	
+	private String noticeContent1; 			//优惠活动公告
+	private String noticeContent2; 
+	private String noticeContent3; 
+	
+	
+	private Double pointDiffMinLlg;			//产品点差(最低)LLG、LLS、HKG、LKG、WH、YY
 	private Double pointDiffMinLls;
 	private Double pointDiffMinHkg;
 	private Double pointDiffMinLkg;
+	private Double pointDiffMinWh;
+	private Double pointDiffMinYy;
 	
 	private Double minTradeNumLlg;			//单次交易手数(最低)LLG、LLS、HKG、LKG
 	private Double minTradeNumLls;
 	private Double minTradeNumHkg;
 	private Double minTradeNumLkg;
+	private Double minTradeNumWh;
+	private Double minTradeNumYy;
 	
 	private Double maxTradeNumLlg;			//单次交易手数(最高)LLG、LLS、HKG、LKG
 	private Double maxTradeNumLls;
 	private Double maxTradeNumHkg;
 	private Double maxTradeNumLkg;
+	private Double maxTradeNumWh;
+	private Double maxTradeNumYy;
+	
+	
+	
 	private Double maxHoldNum;				//持仓手数上限
 	private String isReturnCommission;		//客户回佣 (1-提供/0-不提供)
 	
-	private BigDecimal commissionEurope;	//欧美返佣、黄金返佣、白银返佣、原油返佣
-	private BigDecimal commissionGold;
-	private BigDecimal commissionSilver;
-	private BigDecimal commissionOil;
+	private BigDecimal commissionLlg;		//黄金返佣、白银返佣、港金、  人民币公斤、外汇、原油
+	private BigDecimal commissionLls;
+	private BigDecimal commissionHkg;
+	private BigDecimal commissionLkg;
+	private BigDecimal commissionWh;
+	private BigDecimal commissionYy;
+	
 	
 	private String isTradeCode;				//交易编码(1-提供/0-不提供)
 	private String isOpenFee;				//建仓手续费（1-收取/0-不收取）
@@ -178,6 +201,18 @@ public class BrokerExtInfo extends BrokerInfo{
 	public void setPointDiffMinLkg(Double pointDiffMinLkg) {
 		this.pointDiffMinLkg = pointDiffMinLkg;
 	}
+	public Double getPointDiffMinWh() {
+		return pointDiffMinWh;
+	}
+	public void setPointDiffMinWh(Double pointDiffMinWh) {
+		this.pointDiffMinWh = pointDiffMinWh;
+	}
+	public Double getPointDiffMinYy() {
+		return pointDiffMinYy;
+	}
+	public void setPointDiffMinYy(Double pointDiffMinYy) {
+		this.pointDiffMinYy = pointDiffMinYy;
+	}
 	public Double getMinTradeNumLlg() {
 		return minTradeNumLlg;
 	}
@@ -202,6 +237,18 @@ public class BrokerExtInfo extends BrokerInfo{
 	public void setMinTradeNumLkg(Double minTradeNumLkg) {
 		this.minTradeNumLkg = minTradeNumLkg;
 	}
+	public Double getMinTradeNumWh() {
+		return minTradeNumWh;
+	}
+	public void setMinTradeNumWh(Double minTradeNumWh) {
+		this.minTradeNumWh = minTradeNumWh;
+	}
+	public Double getMinTradeNumYy() {
+		return minTradeNumYy;
+	}
+	public void setMinTradeNumYy(Double minTradeNumYy) {
+		this.minTradeNumYy = minTradeNumYy;
+	}
 	public Double getMaxTradeNumLlg() {
 		return maxTradeNumLlg;
 	}
@@ -225,6 +272,18 @@ public class BrokerExtInfo extends BrokerInfo{
 	}
 	public void setMaxTradeNumLkg(Double maxTradeNumLkg) {
 		this.maxTradeNumLkg = maxTradeNumLkg;
+	}
+	public Double getMaxTradeNumWh() {
+		return maxTradeNumWh;
+	}
+	public void setMaxTradeNumWh(Double maxTradeNumWh) {
+		this.maxTradeNumWh = maxTradeNumWh;
+	}
+	public Double getMaxTradeNumYy() {
+		return maxTradeNumYy;
+	}
+	public void setMaxTradeNumYy(Double maxTradeNumYy) {
+		this.maxTradeNumYy = maxTradeNumYy;
 	}
 	public Double getMaxHoldNum() {
 		return maxHoldNum;
@@ -323,30 +382,6 @@ public class BrokerExtInfo extends BrokerInfo{
 	public void setCompanyIndex(Integer companyIndex) {
 		this.companyIndex = companyIndex;
 	}
-	public BigDecimal getCommissionEurope() {
-		return commissionEurope;
-	}
-	public void setCommissionEurope(BigDecimal commissionEurope) {
-		this.commissionEurope = commissionEurope;
-	}
-	public BigDecimal getCommissionGold() {
-		return commissionGold;
-	}
-	public void setCommissionGold(BigDecimal commissionGold) {
-		this.commissionGold = commissionGold;
-	}
-	public BigDecimal getCommissionSilver() {
-		return commissionSilver;
-	}
-	public void setCommissionSilver(BigDecimal commissionSilver) {
-		this.commissionSilver = commissionSilver;
-	}
-	public BigDecimal getCommissionOil() {
-		return commissionOil;
-	}
-	public void setCommissionOil(BigDecimal commissionOil) {
-		this.commissionOil = commissionOil;
-	}
 	@Column(length=64)
 	public String getImageUrl() {
 		return imageUrl;
@@ -354,6 +389,113 @@ public class BrokerExtInfo extends BrokerInfo{
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
+	
+	
+	public BigDecimal getCommissionLlg() {
+		return commissionLlg;
+	}
+	public void setCommissionLlg(BigDecimal commissionLlg) {
+		this.commissionLlg = commissionLlg;
+	}
+	public BigDecimal getCommissionLls() {
+		return commissionLls;
+	}
+	public void setCommissionLls(BigDecimal commissionLls) {
+		this.commissionLls = commissionLls;
+	}
+	public BigDecimal getCommissionHkg() {
+		return commissionHkg;
+	}
+	public void setCommissionHkg(BigDecimal commissionHkg) {
+		this.commissionHkg = commissionHkg;
+	}
+	public BigDecimal getCommissionLkg() {
+		return commissionLkg;
+	}
+	public void setCommissionLkg(BigDecimal commissionLkg) {
+		this.commissionLkg = commissionLkg;
+	}
+	public BigDecimal getCommissionWh() {
+		return commissionWh;
+	}
+	public void setCommissionWh(BigDecimal commissionWh) {
+		this.commissionWh = commissionWh;
+	}
+	public BigDecimal getCommissionYy() {
+		return commissionYy;
+	}
+	public void setCommissionYy(BigDecimal commissionYy) {
+		this.commissionYy = commissionYy;
+	}
+	@Column(length=512)
+	public String getNoticeContent1() {
+		return noticeContent1;
+	}
+	public void setNoticeContent1(String noticeContent1) {
+		this.noticeContent1 = noticeContent1;
+	}
+	@Column(length=512)
+	public String getNoticeContent2() {
+		return noticeContent2;
+	}
+	public void setNoticeContent2(String noticeContent2) {
+		this.noticeContent2 = noticeContent2;
+	}
+	@Column(length=512)
+	public String getNoticeContent3() {
+		return noticeContent3;
+	}
+	public void setNoticeContent3(String noticeContent3) {
+		this.noticeContent3 = noticeContent3;
+	}
+	
+	@Column(length=2)
+	public String getLicenseType() {
+		return licenseType;
+	}
+	public void setLicenseType(String licenseType) {
+		this.licenseType = licenseType;
+	}
+	@Column(length=64)
+	public String getCommissionUrl() {
+		return commissionUrl;
+	}
+	public void setCommissionUrl(String commissionUrl) {
+		this.commissionUrl = commissionUrl;
+	}
+	@Column(length=2)
+	public String getIsInOutFree() {
+		return isInOutFree;
+	}
+	public void setIsInOutFree(String isInOutFree) {
+		this.isInOutFree = isInOutFree;
+	}
+	@Column(length=2)
+	public String getIsUnionpay() {
+		return isUnionpay;
+	}
+	public void setIsUnionpay(String isUnionpay) {
+		this.isUnionpay = isUnionpay;
+	}
+	@Column(length=2)
+	public String getIsRmbSupport() {
+		return isRmbSupport;
+	}
+	public void setIsRmbSupport(String isRmbSupport) {
+		this.isRmbSupport = isRmbSupport;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@javax.persistence.Transient
 	public Integer getImageHeight() {

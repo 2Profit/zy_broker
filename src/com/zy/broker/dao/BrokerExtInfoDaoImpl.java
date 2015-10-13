@@ -37,19 +37,64 @@ public class BrokerExtInfoDaoImpl extends CustomBaseSqlDaoImpl implements Broker
 			hql.append(" and l.enName like :enName ");
 			params.put("enName", "%"+queryDto.getEnName()+"%");
 		}
-		if(StringUtils.isNotBlank(queryDto.getExchangeType())){
+		
+		
+		/*if(StringUtils.isNotBlank(queryDto.getExchangeType())){
 			hql.append(" and l.exchangeType like :exchangeType ");
 			params.put("exchangeType", "%"+queryDto.getExchangeType()+"%");
 		}
 		if(StringUtils.isNotBlank(queryDto.getExchangeNo())){
 			hql.append(" and l.exchangeNo = :exchangeNo ");
 			params.put("exchangeNo", queryDto.getExchangeNo());
+		}*/
+		
+		if(StringUtils.isNotBlank(queryDto.getExchangeTypeParam())){
+			//根据类型查询
+			if(StringUtils.isNotBlank(queryDto.getExchangeNo1())){
+				hql.append(" and l.exchangeNo1 != '' ");
+			}
+			if(StringUtils.isNotBlank(queryDto.getExchangeNo2())){
+				hql.append(" and l.exchangeNo2 != '' ");
+			}
+			if(StringUtils.isNotBlank(queryDto.getExchangeNo3())){
+				hql.append(" and l.exchangeNo3 != '' ");
+			}
+			if(StringUtils.isNotBlank(queryDto.getExchangeNo4())){
+				hql.append(" and l.exchangeNo4 != '' ");
+			}
+		}else{
+			//根据编号查询
+			if(StringUtils.isNotBlank(queryDto.getExchangeNo1())){
+				hql.append(" and l.exchangeNo1 like :exchangeNo1 ");
+				params.put("exchangeNo1", "%"+queryDto.getExchangeNo1()+"%");
+			}
+			if(StringUtils.isNotBlank(queryDto.getExchangeNo2())){
+				hql.append(" and l.exchangeNo2 like :exchangeNo2 ");
+				params.put("exchangeNo2", "%"+queryDto.getExchangeNo2()+"%");
+			}
+			if(StringUtils.isNotBlank(queryDto.getExchangeNo3())){
+				hql.append(" and l.exchangeNo3 like :exchangeNo3 ");
+				params.put("exchangeNo3", "%"+queryDto.getExchangeNo3()+"%");
+			}
+			if(StringUtils.isNotBlank(queryDto.getExchangeNo4())){
+				hql.append(" and l.exchangeNo4 like :exchangeNo4 ");
+				params.put("exchangeNo4", "%"+queryDto.getExchangeNo4()+"%");
+			}
 		}
+		
+		
 		if(StringUtils.isNotBlank(queryDto.getPlatform())){
 			hql.append(" and l.platform like :platform ");
 			params.put("platform", "%"+queryDto.getPlatform()+"%");
 		}
-		
+		if(StringUtils.isNotBlank(queryDto.getIsShowUrl())){
+			hql.append(" and l.isShowUrl = :isShowUrl ");
+			params.put("isShowUrl", queryDto.getIsShowUrl());
+		}
+		if(StringUtils.isNotBlank(queryDto.getLicenseType())){
+			hql.append(" and l.licenseType = :licenseType ");
+			params.put("licenseType", queryDto.getLicenseType());
+		}
 		if(StringUtils.isNotBlank(queryDto.getCompanyArea())){
 			hql.append(" and l.companyArea = :companyArea ");
 			params.put("companyArea", queryDto.getCompanyArea());
