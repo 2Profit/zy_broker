@@ -12,8 +12,17 @@ public interface BrokerExtInfoDao extends BrokerExtInfoCustomDao,CommonDao<Broke
 	@Query(" select count(1) from BrokerExtInfo i where i.companyIndex = ?1")
 	public int findByCompanyIndex(Integer index);
 	
-	@Query(" select count(1) from BrokerExtInfo i where i.exchangeNo = ?1")
-	public int findByExchangeNo(String exchangeNo);
+	@Query(" select count(1) from BrokerExtInfo i where i.exchangeNo1 = ?1")
+	public int findByExchangeNo1(String exchangeNo1);
+	
+	@Query(" select count(1) from BrokerExtInfo i where i.exchangeNo2 = ?1")
+	public int findByExchangeNo2(String exchangeNo2);
+	
+	@Query(" select count(1) from BrokerExtInfo i where i.exchangeNo3 = ?1")
+	public int findByExchangeNo3(String exchangeNo3);
+	
+	@Query(" select count(1) from BrokerExtInfo i where i.exchangeNo4 = ?1")
+	public int findByExchangeNo4(String exchangeNo4);
 	
 	@Query(" select count(1) from BrokerExtInfo i where i.cnName = ?1")
 	public int findByCnName(String cnName);

@@ -22,6 +22,7 @@ public class BrokerExtInfoDto extends BrokerExtInfo{
 	private String brokerName;
 	private String orderByParam;
 	private String orderByDirection;
+	private String exchangeTypeParam;//网站根据经纪商类型查询
 
 	public String[] getIds() {
 		return ids;
@@ -52,6 +53,12 @@ public class BrokerExtInfoDto extends BrokerExtInfo{
 	}
 	public void setBrokerName(String brokerName) {
 		this.brokerName = brokerName;
+	}
+	public String getExchangeTypeParam() {
+		return exchangeTypeParam;
+	}
+	public void setExchangeTypeParam(String exchangeTypeParam) {
+		this.exchangeTypeParam = exchangeTypeParam;
 	}
 	
 	

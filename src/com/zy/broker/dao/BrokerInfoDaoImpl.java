@@ -31,14 +31,14 @@ public class BrokerInfoDaoImpl extends CustomBaseSqlDaoImpl implements BrokerInf
 			hql.append(" and l.enName like :enName ");
 			params.put("enName", "%"+queryDto.getEnName()+"%");
 		}
-		if(StringUtils.isNotBlank(queryDto.getExchangeType())){
+		/*if(StringUtils.isNotBlank(queryDto.getExchangeType())){
 			hql.append(" and l.exchangeType = :exchangeType ");
 			params.put("exchangeType", queryDto.getExchangeType());
 		}
 		if(StringUtils.isNotBlank(queryDto.getExchangeNo())){
 			hql.append(" and l.exchangeNo = :exchangeNo ");
 			params.put("exchangeNo", queryDto.getExchangeNo());
-		}
+		}*/
 		
 		hql.append(" order by l.updateDate desc ");
 		

@@ -34,8 +34,17 @@ public class BrokerExtInfoService extends CommonService<BrokerExtInfo,String>{
 		return brokerExtInfoDao.findByCompanyIndex(index);
 	}
 	
-	public int findByExchangeNo(String exchangeNo){
-		return brokerExtInfoDao.findByExchangeNo(exchangeNo);
+	public int findByExchangeNo1(String exchangeNo1){
+		return brokerExtInfoDao.findByExchangeNo1(exchangeNo1);
+	}
+	public int findByExchangeNo2(String exchangeNo2){
+		return brokerExtInfoDao.findByExchangeNo2(exchangeNo2);
+	}
+	public int findByExchangeNo3(String exchangeNo3){
+		return brokerExtInfoDao.findByExchangeNo3(exchangeNo3);
+	}
+	public int findByExchangeNo4(String exchangeNo4){
+		return brokerExtInfoDao.findByExchangeNo4(exchangeNo4);
 	}
 	
 	public int findByCnName(String cnName){
