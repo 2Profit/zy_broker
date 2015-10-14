@@ -422,8 +422,6 @@ public class BrokerExtInfo extends BrokerInfo{
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
-	
-	
 	public BigDecimal getCommissionLlg() {
 		return commissionLlg;
 	}
