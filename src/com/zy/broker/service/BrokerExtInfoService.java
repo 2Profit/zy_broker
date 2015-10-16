@@ -57,8 +57,8 @@ public class BrokerExtInfoService extends CommonService<BrokerExtInfo,String>{
 	
 	public List<BrokerExtInfo> findIndexPageBrokers(){
 		BrokerExtInfoDto queryDto = new BrokerExtInfoDto();
-		queryDto.setOrderByParam(BrokerExtInfoDto.ORDERBY_COMPANYINDEX);
-		queryDto.setOrderByDirection(BrokerExtInfoDto.ORDERBY_DESC);
+		queryDto.setOrderP(BrokerExtInfoDto.ORDERBY_COMPANYINDEX);
+		queryDto.setOrderD(BrokerExtInfoDto.ORDERBY_DESC);
 		PageModel<BrokerExtInfo> pageModel = new PageModel<BrokerExtInfo>();
 		pageModel.setPageSize(6);
 		return brokerExtInfoDao.queryForPage(queryDto,pageModel).getList();
