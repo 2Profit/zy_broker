@@ -36,6 +36,7 @@ public class BrokerExtInfo extends BrokerInfo{
 	private String isUnionpay;				//是否支持银联（0-否，1-是）
 	private String isRmbSupport;			//是否支持人民币入金（0-否，1-是）
 	private String commissionCode;			//客户回佣交易编码
+	private BigDecimal minIncomeMoney;		//最低入金
 	
 	private String noticeContent1; 			//优惠活动公告
 	private String noticeContent2; 
@@ -81,7 +82,7 @@ public class BrokerExtInfo extends BrokerInfo{
 	private String isCloseFee;				//平仓手续费（1-收 取/0-不收取）
 	private Double longRate;				//多仓利息(接受录入负数值, 例如, -1.25%、-0.75%)
 	private Double shortRate;				//空仓利息(接受录入负数值, 例如, -1.25%、-0.75%)
-	private BigDecimal minIncomeMoney;		//最低入金
+
 	
 	private BigDecimal openMoneyLlg;		//开仓保证金(LLG、LLS、HKG、LKG/伦敦金、伦敦银、港金、人民币公斤条)
 	private BigDecimal openMoneyLls;

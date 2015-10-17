@@ -7,4 +7,6 @@ import com.zy.common.entity.PageModel;
 public interface BrokerExtInfoCustomDao {
 
 	PageModel<BrokerExtInfo> queryForPage(BrokerExtInfoDto queryDto,PageModel<BrokerExtInfo> pageModal);
+	
+	PageModel<BrokerExtInfo> queryPage(BrokerExtInfoDto queryDto,PageModel<BrokerExtInfo> pageModal);
 }
