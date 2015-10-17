@@ -290,13 +290,13 @@ public class BrokerExtInfoDaoImpl extends CustomBaseSqlDaoImpl implements Broker
 		}
 		if(StringUtils.isNotBlank(queryDto.getExTypeP())){
 			if("0".equals(queryDto.getExTypeP())){
-				sb.append(" and ( b.exchange_no1 is not null or != '' )");
+				sb.append(" and ( b.exchange_no1 is not null or b.exchange_no1 != '' )");
 			}else if("1".equals(queryDto.getExTypeP())){
-				sb.append(" and ( b.exchange_no2 is not null or != '' ) ");
+				sb.append(" and ( b.exchange_no2 is not null or b.exchange_no2 != '' ) ");
 			}else if("2".equals(queryDto.getExTypeP())){
-				sb.append(" and ( b.exchange_no3 is not null or != '' ) ");
+				sb.append(" and ( b.exchange_no3 is not null or b.exchange_no3 != '' ) ");
 			}else if("3".equals(queryDto.getExTypeP())){
-				sb.append(" and ( b.exchange_no4 is not null or != '' ) ");
+				sb.append(" and ( b.exchange_no4 is not null or b.exchange_no4 != '' ) ");
 			}
 		}
 		if(StringUtils.isNoneBlank(queryDto.getOrderP())){
