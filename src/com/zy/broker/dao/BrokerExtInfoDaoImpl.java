@@ -303,6 +303,8 @@ public class BrokerExtInfoDaoImpl extends CustomBaseSqlDaoImpl implements Broker
 			sb.append(" order by i.").append(queryDto.getOrderP());
 			if(StringUtils.isNotBlank(queryDto.getOrderD())){
 				sb.append(queryDto.getOrderD());
+			}else{
+				sb.append(" desc ");
 			}
 		}else{
 			sb.append(" order by i.company_index desc ");

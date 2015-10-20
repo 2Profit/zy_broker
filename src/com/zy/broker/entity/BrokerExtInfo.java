@@ -37,6 +37,7 @@ public class BrokerExtInfo extends BrokerInfo{
 	private String isRmbSupport;			//是否支持人民币入金（0-否，1-是）
 	private String commissionCode;			//客户回佣交易编码
 	private BigDecimal minIncomeMoney;		//最低入金
+	private Integer isRecommet;				//是否推荐					
 	
 	private String noticeContent1; 			//优惠活动公告
 	private String noticeContent2; 
@@ -528,6 +529,12 @@ public class BrokerExtInfo extends BrokerInfo{
 	}
 	public void setMinIncomeMoney(BigDecimal minIncomeMoney) {
 		this.minIncomeMoney = minIncomeMoney;
+	}
+	public Integer getIsRecommet() {
+		return isRecommet;
+	}
+	public void setIsRecommet(Integer isRecommet) {
+		this.isRecommet = isRecommet;
 	}
 	
 
