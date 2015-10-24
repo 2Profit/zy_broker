@@ -98,9 +98,28 @@ public class BrokerExtInfo extends BrokerInfo{
 	private String isEaSupport;			//EA支援（0-不支援、1-支援）
 	private Integer companyIndex;		//公司推荐值（数字大优先级高）
 	private String imageUrl;			//经纪商图标
+	private String imageUrlH5;			//经纪商图片H5页面使用
 	
 	private Integer imageHeight;//主题图片高
 	private Integer imageWidth;//主题图片宽
+	
+	private Integer imageHeightH5;//主题图片高H5
+	private Integer imageWidthH5;//主题图片宽H5
+	
+	@javax.persistence.Transient
+	public Integer getImageHeightH5() {
+		return imageHeightH5;
+	}
+	public void setImageHeightH5(Integer imageHeightH5) {
+		this.imageHeightH5 = imageHeightH5;
+	}
+	@javax.persistence.Transient
+	public Integer getImageWidthH5() {
+		return imageWidthH5;
+	}
+	public void setImageWidthH5(Integer imageWidthH5) {
+		this.imageWidthH5 = imageWidthH5;
+	}
 	@javax.persistence.Transient
 	public Integer getImageHeight() {
 		return imageHeight;
@@ -535,6 +554,13 @@ public class BrokerExtInfo extends BrokerInfo{
 	}
 	public void setIsRecommet(Integer isRecommet) {
 		this.isRecommet = isRecommet;
+	}
+	@Column(length=64)
+	public String getImageUrlH5() {
+		return imageUrlH5;
+	}
+	public void setImageUrlH5(String imageUrlH5) {
+		this.imageUrlH5 = imageUrlH5;
 	}
 	
 
