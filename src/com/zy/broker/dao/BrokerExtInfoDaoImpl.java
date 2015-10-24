@@ -36,6 +36,14 @@ public class BrokerExtInfoDaoImpl extends CustomBaseSqlDaoImpl implements Broker
 	private static ResultSetHandler<List<BrokerExtInfo>> rsh = 
     		new BeanListHandler<BrokerExtInfo>(BrokerExtInfo.class, new BasicRowProcessor(new HumpPropertyBeanProcessor()));
 
+	@Override
+	public void updateDeleteFlag(String[] ids,Integer isDelete){
+		Map<String,Object> params = new HashMap<String,Object>();
+		params.put("isDelete", isDelete);
+		params.put("ids", Arrays.asList(ids));
+		namedParameterJdbcTemplate.update("update broker_base_info set delete_flag = :isDelete, update_date = now() where id in (:ids) ", params);
+	}
+	
 	
 	@Override
 	@SuppressWarnings("unchecked")
@@ -242,12 +250,7 @@ public class BrokerExtInfoDaoImpl extends CustomBaseSqlDaoImpl implements Broker
 		}
 	}
 	
-	public void updateDeleteFlag(String[] ids,Integer isDelete){
-		Map<String,Object> params = new HashMap<String,Object>();
-		params.put("isDelete", isDelete);
-		params.put("ids", Arrays.asList(ids));
-		namedParameterJdbcTemplate.update("update broker_ext_info set delete_flag = :isDelete, update_date = now() where id in (:ids) ", params);
-	}
+
 	
 	
 	/**
@@ -264,7 +267,7 @@ public class BrokerExtInfoDaoImpl extends CustomBaseSqlDaoImpl implements Broker
 		sb.append(" select b.cn_name,b.en_name,b.exchange_no1,b.exchange_no2,b.exchange_no3,b.exchange_no4,i.* ");
 		sb.append(" from broker_ext_info i ");
 		sb.append(" inner join broker_base_info b on b.id= i.id ");
-		sb.append(" where 1=1  ");
+		sb.append(" where 1=1 and b.delete_flag = 0 ");
 		if(StringUtils.isNotBlank(queryDto.getBkName())){
 			sb.append(" and ( b.cn_name like '%").append(queryDto.getBkName()).append("%' ");
 			sb.append("       or b.en_name like '%").append(queryDto.getBkName()).append("%' ) ");

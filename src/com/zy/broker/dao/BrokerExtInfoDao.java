@@ -7,8 +7,6 @@ import com.zy.common.dao.CommonDao;
 
 public interface BrokerExtInfoDao extends BrokerExtInfoCustomDao,CommonDao<BrokerExtInfo,String>{
 
-	public void updateDeleteFlag(String[] ids,Integer isDelete);
-	
 	@Query(" select count(1) from BrokerExtInfo i where i.companyIndex = ?1")
 	public int findByCompanyIndex(Integer index);
 	
