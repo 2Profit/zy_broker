@@ -37,7 +37,9 @@ public class BrokerExtInfo extends BrokerInfo{
 	private String isRmbSupport;			//是否支持人民币入金（0-否，1-是）
 	private String commissionCode;			//客户回佣交易编码
 	private BigDecimal minIncomeMoney;		//最低入金
-	private Integer isRecommet;				//是否推荐					
+	private Integer isRecommet;				//是否推荐
+	private String introduction;			//公司简介
+	private Integer profitStar;				//至盈评级(1.一颗星 、2.两颗星、3.三颗星、4.四颗星、5.五颗星、6.六颗星)
 	
 	private String noticeContent1; 			//优惠活动公告
 	private String noticeContent2; 
@@ -100,11 +102,11 @@ public class BrokerExtInfo extends BrokerInfo{
 	private String imageUrl;			//经纪商图标
 	private String imageUrlH5;			//经纪商图片H5页面使用
 	
-	private Integer imageHeight;//主题图片高
-	private Integer imageWidth;//主题图片宽
+	private Integer imageHeight;		//主题图片高
+	private Integer imageWidth;			//主题图片宽
 	
-	private Integer imageHeightH5;//主题图片高H5
-	private Integer imageWidthH5;//主题图片宽H5
+	private Integer imageHeightH5;		//主题图片高H5
+	private Integer imageWidthH5;		//主题图片宽H5
 	
 	@javax.persistence.Transient
 	public Integer getImageHeightH5() {
@@ -562,6 +564,20 @@ public class BrokerExtInfo extends BrokerInfo{
 	public void setImageUrlH5(String imageUrlH5) {
 		this.imageUrlH5 = imageUrlH5;
 	}
+	@Column(length=256)
+	public String getIntroduction() {
+		return introduction;
+	}
+	public void setIntroduction(String introduction) {
+		this.introduction = introduction;
+	}
+	public Integer getProfitStar() {
+		return profitStar;
+	}
+	public void setProfitStar(Integer profitStar) {
+		this.profitStar = profitStar;
+	}
+
 	
 
 	
