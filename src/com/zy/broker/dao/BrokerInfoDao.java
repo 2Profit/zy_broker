@@ -11,6 +11,6 @@ public interface BrokerInfoDao extends CommonDao<BrokerInfo,String> {
 
 	public void updateDeleteFlag(String[] ids,Integer isDelete);
 	
-	@Query("select u from BrokerInfo u where u.deleteFlag=?1 ")
+	@Query("select u from BrokerInfo u where u.deleteFlag=?1 order by u.cnName")
 	public List<BrokerInfo> findAllBrokerInfo(Integer deleteFlag);
 }
