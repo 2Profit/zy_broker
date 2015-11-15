@@ -33,8 +33,8 @@ public class BrokerExtInfoDaoImpl extends CustomBaseSqlDaoImpl implements Broker
 	
 	private QueryRunner qr = new QueryRunner();
 	
-	private static ResultSetHandler<List<BrokerExtInfo>> rsh = 
-    		new BeanListHandler<BrokerExtInfo>(BrokerExtInfo.class, new BasicRowProcessor(new HumpPropertyBeanProcessor()));
+	private static ResultSetHandler<List<BrokerExtInfoDto>> rsh = 
+    		new BeanListHandler<BrokerExtInfoDto>(BrokerExtInfoDto.class, new BasicRowProcessor(new HumpPropertyBeanProcessor()));
 
 	@Override
 	public void updateDeleteFlag(String[] ids,Integer isDelete){
@@ -181,7 +181,7 @@ public class BrokerExtInfoDaoImpl extends CustomBaseSqlDaoImpl implements Broker
 	 */
 	private void slider1Hql(BrokerExtInfoDto queryDto, StringBuilder hql,
 			Map<String, Object> params) {
-		if((queryDto.getSlider1F()!=null && queryDto.getSlider1T()!=null) &&
+		/*if((queryDto.getSlider1F()!=null && queryDto.getSlider1T()!=null) &&
 				(queryDto.getSlider1F().compareTo(new BigDecimal(0))!=0 || queryDto.getSlider1T().compareTo(new BigDecimal(0))!=0)){
 			
 			if(BrokerExtInfoDto.PRODUCT_TYPE_ZERO.equals(queryDto.getProductType())){
@@ -200,7 +200,7 @@ public class BrokerExtInfoDaoImpl extends CustomBaseSqlDaoImpl implements Broker
 			hql.append(" between :pointDiffMinFrom and :pointDiffMinTo ");
 			params.put("pointDiffMinFrom", queryDto.getSlider1F());
 			params.put("pointDiffMinTo", queryDto.getSlider1T());
-		}
+		}*/
 	}
 	
 	/**
@@ -212,13 +212,13 @@ public class BrokerExtInfoDaoImpl extends CustomBaseSqlDaoImpl implements Broker
 	private void slider2Hql(BrokerExtInfoDto queryDto, StringBuilder hql,
 			Map<String, Object> params) {
 		
-		if((queryDto.getSlider2F()!=null && queryDto.getSlider2T()!=null) &&
+		/*if((queryDto.getSlider2F()!=null && queryDto.getSlider2T()!=null) &&
 				(queryDto.getSlider2F().compareTo(new BigDecimal(0))!=0 || queryDto.getSlider2T().compareTo(new BigDecimal(0))!=0)){
 			
 			hql.append(" and l.leverRate between :leverRateFrom and :leverRateTo ");
 			params.put("leverRateFrom", queryDto.getSlider2F());
 			params.put("leverRateTo", queryDto.getSlider2T());
-		}
+		}*/
 	}
 	/**
 	 * 拼装Slider3参数
@@ -228,7 +228,7 @@ public class BrokerExtInfoDaoImpl extends CustomBaseSqlDaoImpl implements Broker
 	 */
 	private void slider3Hql(BrokerExtInfoDto queryDto, StringBuilder hql,
 			Map<String, Object> params) {
-		if((queryDto.getSlider3F()!=null && queryDto.getSlider3T()!=null) &&
+		/*if((queryDto.getSlider3F()!=null && queryDto.getSlider3T()!=null) &&
 				(queryDto.getSlider3F().compareTo(new BigDecimal(0))!=0 || queryDto.getSlider3T().compareTo(new BigDecimal(0))!=0)){
 			
 			if(BrokerExtInfoDto.PRODUCT_TYPE_ZERO.equals(queryDto.getProductType())){
@@ -247,7 +247,7 @@ public class BrokerExtInfoDaoImpl extends CustomBaseSqlDaoImpl implements Broker
 			hql.append(" between :openMoneyFrom and :openMoneyTo ");
 			params.put("openMoneyFrom", queryDto.getSlider3F());
 			params.put("openMoneyTo", queryDto.getSlider3T());
-		}
+		}*/
 	}
 	
 
@@ -257,8 +257,8 @@ public class BrokerExtInfoDaoImpl extends CustomBaseSqlDaoImpl implements Broker
 	 * 使用sql，用dbutils转换成BrokerExtInfo对象，方便页面使用
 	 */
 	@Override
-	public PageModel<BrokerExtInfo> queryPage(BrokerExtInfoDto queryDto, PageModel<BrokerExtInfo> pageModal) {
-		PageModel<BrokerExtInfo> result = new PageModel<BrokerExtInfo>();
+	public PageModel<BrokerExtInfoDto> queryPage(BrokerExtInfoDto queryDto, PageModel<BrokerExtInfo> pageModal) {
+		PageModel<BrokerExtInfoDto> result = new PageModel<BrokerExtInfoDto>();
 		
 		int currentPage = pageModal.getCurrentPage();
 		int pageSize = pageModal.getPageSize();
@@ -315,9 +315,13 @@ public class BrokerExtInfoDaoImpl extends CustomBaseSqlDaoImpl implements Broker
 		int totalCount = this.getCount(sb.toString());
 		if(totalCount > 0 ){
 			
-			List<BrokerExtInfo> dataList;
+			List<BrokerExtInfoDto> dataList;
 			try {
-				sb.append(" limit ").append(pageSize).append(" offset ").append((currentPage-1)*pageSize);
+				// mysql 数据库使用
+				sb.append(" limit ").append((currentPage-1)*pageSize).append(" , ").append(pageSize);
+				
+				// postgre 数据库使用
+				//sb.append(" limit ").append(pageSize).append(" offset ").append((currentPage-1)*pageSize);
 				
 				Connection connection = jdbcTemplate.getDataSource().getConnection();
 				dataList = qr.query(connection,sb.toString(),rsh);
@@ -350,11 +354,11 @@ public class BrokerExtInfoDaoImpl extends CustomBaseSqlDaoImpl implements Broker
 	 */
 	private void slider2Sql(BrokerExtInfoDto queryDto, StringBuilder sql) {
 		
-		if((queryDto.getSlider2F()!=null && queryDto.getSlider2T()!=null) &&
+		/*if((queryDto.getSlider2F()!=null && queryDto.getSlider2T()!=null) &&
 				(queryDto.getSlider2F().compareTo(new BigDecimal(0))!=0 || queryDto.getSlider2T().compareTo(new BigDecimal(0))!=0)){
 			
 			sql.append(" and i.lever_rate between ").append(queryDto.getSlider2F()).append(" and ").append(queryDto.getSlider2T());
-		}
+		}*/
 	}
 	
 	
@@ -365,7 +369,7 @@ public class BrokerExtInfoDaoImpl extends CustomBaseSqlDaoImpl implements Broker
 	 */
 	private void slider1Sql(BrokerExtInfoDto queryDto, StringBuilder sql) {
 		
-		if((queryDto.getSlider1F()!=null && queryDto.getSlider1T()!=null) &&
+		/*if((queryDto.getSlider1F()!=null && queryDto.getSlider1T()!=null) &&
 				(queryDto.getSlider1F().compareTo(new BigDecimal(0))!=0 || queryDto.getSlider1T().compareTo(new BigDecimal(0))!=0)){
 			
 			if("0".equals(queryDto.getProductType())){
@@ -382,7 +386,7 @@ public class BrokerExtInfoDaoImpl extends CustomBaseSqlDaoImpl implements Broker
 				sql.append(" and i.point_diff_min_yy");
 			}
 			sql.append(" between ").append(queryDto.getSlider1F()).append(" and ").append(queryDto.getSlider1T());
-		}
+		}*/
 	}
 	
 	/**
@@ -392,7 +396,7 @@ public class BrokerExtInfoDaoImpl extends CustomBaseSqlDaoImpl implements Broker
 	 */
 	private void slider3Sql(BrokerExtInfoDto queryDto, StringBuilder sql) {
 		
-		if((queryDto.getSlider3F()!=null && queryDto.getSlider3T()!=null) &&
+		/*if((queryDto.getSlider3F()!=null && queryDto.getSlider3T()!=null) &&
 				(queryDto.getSlider3F().compareTo(new BigDecimal(0))!=0 || queryDto.getSlider3T().compareTo(new BigDecimal(0))!=0)){
 			
 			if("0".equals(queryDto.getProductType())){
@@ -409,6 +413,6 @@ public class BrokerExtInfoDaoImpl extends CustomBaseSqlDaoImpl implements Broker
 				sql.append(" and i.open_money_yy ");
 			}
 			sql.append(" between ").append(queryDto.getSlider3F()).append(" and ").append(queryDto.getSlider3T());
-		}
+		}*/
 	}
 }

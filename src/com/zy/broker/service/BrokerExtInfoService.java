@@ -26,7 +26,7 @@ public class BrokerExtInfoService extends CommonService<BrokerExtInfo,String>{
 		return brokerExtInfoDao.queryForPage(queryDto,pageModel);
 	}
 	
-	public PageModel<BrokerExtInfo> queryPage(BrokerExtInfoDto queryDto,PageModel<BrokerExtInfo> pageModel){
+	public PageModel<BrokerExtInfoDto> queryPage(BrokerExtInfoDto queryDto,PageModel<BrokerExtInfo> pageModel){
 		return brokerExtInfoDao.queryPage(queryDto,pageModel);
 	}
 	

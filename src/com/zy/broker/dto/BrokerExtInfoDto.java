@@ -46,13 +46,13 @@ public class BrokerExtInfoDto extends BrokerExtInfo{
 	private String orderD;			//orderByDirection	排序方向
 	private String exTypeP;			//网站根据经纪商类型查询
 	
-	private BigDecimal slider1F;		//slide1查询条件起始
+	/*private BigDecimal slider1F;		//slide1查询条件起始
 	private BigDecimal slider1T;		//slide1查询条件起始
 	private BigDecimal slider2F;		//slide1查询条件起始
 	private BigDecimal slider2T;		//slide1查询条件起始
 	private BigDecimal slider3F;		//slide1查询条件起始
 	private BigDecimal slider3T;		//slide1查询条件起始
-	
+*/	
 	private Map<String,String> orderByParamMap = new HashMap<String,String>();
 	
 	//排序箭头保存
@@ -88,7 +88,7 @@ public class BrokerExtInfoDto extends BrokerExtInfo{
 	public void setOrderP(String orderP) {
 		this.orderP = orderP;
 	}
-	public BigDecimal getSlider1F() {
+/*	public BigDecimal getSlider1F() {
 		return slider1F;
 	}
 	public void setSlider1F(BigDecimal slider1f) {
@@ -123,7 +123,7 @@ public class BrokerExtInfoDto extends BrokerExtInfo{
 	}
 	public void setSlider3T(BigDecimal slider3t) {
 		slider3T = slider3t;
-	}
+	}*/
 	public String getOrderD() {
 		return orderD;
 	}

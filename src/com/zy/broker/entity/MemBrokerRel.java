@@ -1,5 +1,6 @@
 package com.zy.broker.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -9,7 +10,7 @@ import com.zy.common.entity.BaseEntity;
 import com.zy.member.entity.Member;
 
 /**
- * �û������̹�����
+ * 
  * @author Jeff Xu
  *
  */
@@ -23,6 +24,8 @@ public class MemBrokerRel extends BaseEntity{
 	
 	private BrokerInfo brokerInfo;
 
+	private String mt4Card;					//MT4账号
+	
 	@ManyToOne
 	@JoinColumn(name = "member_id")
 	public Member getMember() {
@@ -32,7 +35,6 @@ public class MemBrokerRel extends BaseEntity{
 	public void setMember(Member member) {
 		this.member = member;
 	}
-	
 
 	@ManyToOne
 	@JoinColumn(name = "broker_info_id")
@@ -42,6 +44,15 @@ public class MemBrokerRel extends BaseEntity{
 
 	public void setBrokerInfo(BrokerInfo brokerInfo) {
 		this.brokerInfo = brokerInfo;
+	}
+
+	@Column(name="mt4_card", length=64)
+	public String getMt4Card() {
+		return mt4Card;
+	}
+
+	public void setMt4Card(String mt4Card) {
+		this.mt4Card = mt4Card;
 	}
 	
 }
