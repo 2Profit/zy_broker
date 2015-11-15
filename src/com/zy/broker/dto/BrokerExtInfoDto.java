@@ -1,6 +1,8 @@
 package com.zy.broker.dto;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.zy.broker.entity.BrokerExtInfo;
 
@@ -50,6 +52,17 @@ public class BrokerExtInfoDto extends BrokerExtInfo{
 	private BigDecimal slider2T;		//slide1查询条件起始
 	private BigDecimal slider3F;		//slide1查询条件起始
 	private BigDecimal slider3T;		//slide1查询条件起始
+	
+	private Map<String,String> orderByParamMap = new HashMap<String,String>();
+	
+	//排序箭头保存
+	private String arrow_min_income_money;			//最低入金
+	private String arrow_profit_star;				//安全评级
+	private String arrow_commission_llg;			//返佣比例(黄金返佣)
+	private String arrow_is_recommet;				//至盈推荐
+	
+	private String arrow_is_in_out_free;			//出入金免手续费
+	private String arrow_lever_rate;				//最大杠杆 
 
 	public String[] getIds() {
 		return ids;
@@ -122,6 +135,48 @@ public class BrokerExtInfoDto extends BrokerExtInfo{
 	}
 	public void setExTypeP(String exTypeP) {
 		this.exTypeP = exTypeP;
+	}
+	public Map<String, String> getOrderByParamMap() {
+		return orderByParamMap;
+	}
+	public void setOrderByParamMap(Map<String, String> orderByParamMap) {
+		this.orderByParamMap = orderByParamMap;
+	}
+	public String getArrow_min_income_money() {
+		return arrow_min_income_money;
+	}
+	public void setArrow_min_income_money(String arrow_min_income_money) {
+		this.arrow_min_income_money = arrow_min_income_money;
+	}
+	public String getArrow_profit_star() {
+		return arrow_profit_star;
+	}
+	public void setArrow_profit_star(String arrow_profit_star) {
+		this.arrow_profit_star = arrow_profit_star;
+	}
+	public String getArrow_commission_llg() {
+		return arrow_commission_llg;
+	}
+	public void setArrow_commission_llg(String arrow_commission_llg) {
+		this.arrow_commission_llg = arrow_commission_llg;
+	}
+	public String getArrow_is_recommet() {
+		return arrow_is_recommet;
+	}
+	public void setArrow_is_recommet(String arrow_is_recommet) {
+		this.arrow_is_recommet = arrow_is_recommet;
+	}
+	public String getArrow_is_in_out_free() {
+		return arrow_is_in_out_free;
+	}
+	public void setArrow_is_in_out_free(String arrow_is_in_out_free) {
+		this.arrow_is_in_out_free = arrow_is_in_out_free;
+	}
+	public String getArrow_lever_rate() {
+		return arrow_lever_rate;
+	}
+	public void setArrow_lever_rate(String arrow_lever_rate) {
+		this.arrow_lever_rate = arrow_lever_rate;
 	}
 
 

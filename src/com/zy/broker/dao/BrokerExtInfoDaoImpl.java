@@ -254,7 +254,7 @@ public class BrokerExtInfoDaoImpl extends CustomBaseSqlDaoImpl implements Broker
 	
 	
 	/**
-	 * 为了提高查询速度，直接使用sql，并且用dbutils转换成BrokerExtInfo对象，方便页面使用
+	 * 使用sql，用dbutils转换成BrokerExtInfo对象，方便页面使用
 	 */
 	@Override
 	public PageModel<BrokerExtInfo> queryPage(BrokerExtInfoDto queryDto, PageModel<BrokerExtInfo> pageModal) {
@@ -302,15 +302,14 @@ public class BrokerExtInfoDaoImpl extends CustomBaseSqlDaoImpl implements Broker
 				sb.append(" and ( b.exchange_no4 is not null or b.exchange_no4 != '' ) ");
 			}
 		}
-		if(StringUtils.isNoneBlank(queryDto.getOrderP())){
-			sb.append(" order by i.").append(queryDto.getOrderP());
-			/*if(StringUtils.isNotBlank(queryDto.getOrderD())){
-				sb.append(queryDto.getOrderD());
-			}else{
-				sb.append(" desc ");
-			}*/
+		if(queryDto.getOrderByParamMap().size()>0){
+			sb.append(" order by ");
+			for(Map.Entry<String, String> entry : queryDto.getOrderByParamMap().entrySet()){
+				sb.append(" i.").append(entry.getKey()).append(" ").append(entry.getValue()).append(", ");
+			}
+			sb = new StringBuilder(sb.substring(0, sb.toString().length()-2));//  去掉最后多余的【,】
 		}else{
-			sb.append(" order by i.company_index desc ");
+			sb.append(" order by i.profit_star desc ");
 		}
 		
 		int totalCount = this.getCount(sb.toString());
